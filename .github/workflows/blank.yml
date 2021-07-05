@@ -12,6 +12,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: run script
         run: |
-          echo \
-            hai \
-            gege
+          echo 'aaa-${{ secrets.TEST_SECRET }}-bbb' | base64
