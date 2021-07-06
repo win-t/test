@@ -20,4 +20,4 @@ jobs:
       -
         name: Build
         run: |
-          cat ~/.docker/config
+          cat ~/.docker/config.json
