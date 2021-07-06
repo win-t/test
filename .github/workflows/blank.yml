@@ -21,3 +21,4 @@ jobs:
         name: Build
         run: |
           cat ~/.docker/config.json
+          docker buildx version
