@@ -1,24 +1,12 @@
 name: CI
 on:
-  push: {}
-  pull_request: {}
+  push:
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Build
         run: |
-          echo github.event_name ${{ github.event_name }}
-          echo github.event_path ${{ github.event_path }}
-          echo github.run_id ${{ github.run_id }}
-          echo github.run_number ${{ github.run_number }}
-  job1:
-    runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.step1.outputs.test }}
-      output2: ${{ steps.step2.outputs.test }}
-    steps:
-      - id: step1
-        run: echo "::set-output name=test::hello"
-      - id: step2
-        run: echo "::set-output name=test::world"
+          cat <<'eof' | jq .
+          ${{ toJSON(github) }}
+          eof
