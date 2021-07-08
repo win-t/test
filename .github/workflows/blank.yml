@@ -1,15 +1,13 @@
 name: CI
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+  push: {}
+  pull_request: {}
 jobs:
-  buildx:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Build
         run: |
-          docker buildx version
-          docker buildx inspect
+          echo github.event_name ${{ github.event_name }}
+          echo github.event_path ${{ github.event_path }}
+          echo github.job ${{ github.job }}
