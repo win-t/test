@@ -8,6 +8,12 @@ jobs:
     steps:
       - name: Build
         run: |
-          cat <<'eof' | jq .
+          cat <<'eof' > github.json
           ${{ toJSON(github) }}
           eof
+          cat github.json
+      - name: Save github.json
+        uses: actions/upload-artifact@v2
+        with:
+          name: lala
+          path: github.json
