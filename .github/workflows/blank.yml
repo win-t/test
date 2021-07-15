@@ -6,14 +6,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Build
-        run: |
-          cat <<'eof' > github.json
-          ${{ toJSON(github) }}
-          eof
-          cat github.json
-      - name: Save github.json
-        uses: actions/upload-artifact@v2
-        with:
-          name: lala
-          path: github.json
+      - uses: payfazz/setup-fazz-ecr-action@v1
+      - run: |
+          echo https://322727087874.dkr.ecr.ap-southeast-1.amazonaws.com | docker-credential-fazz-ecr get
