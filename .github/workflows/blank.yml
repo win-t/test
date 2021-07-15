@@ -15,7 +15,7 @@ jobs:
       myEscapedString: ${{ 'It''s open source!' }}
     steps:
       - run: |
-          env | grep -i ^my
+          env | sort
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
