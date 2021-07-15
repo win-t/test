@@ -19,6 +19,9 @@ jobs:
           echo "::group::github env"
           cat "$GITHUB_ENV"
           echo "::endgroup::"
+          echo "::group::github path"
+          cat "$GITHUB_PATH"
+          echo "::endgroup::"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
