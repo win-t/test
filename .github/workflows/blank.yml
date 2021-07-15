@@ -16,6 +16,9 @@ jobs:
     steps:
       - run: |
           env | sort
+          echo "::group::github env"
+          cat "$GITHUB_ENV"
+          echo "::endgroup::"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
