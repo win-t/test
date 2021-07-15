@@ -5,15 +5,39 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      myNull: ${{ null }}
+      myBoolean: ${{ false }}
+      myIntegerNumber: ${{ 711 }}
+      myFloatNumber: ${{ -9.2 }}
+      myHexNumber: ${{ 0xff }}
+      myExponentialNumber: ${{ -2.99-e2 }}
+      myString: ${{ 'Mona the Octocat' }}
+      myEscapedString: ${{ 'It''s open source!' }}
     steps:
-      - name: Build
-        run: |
-          cat <<'eof' > github.json
-          ${{ toJSON(github) }}
-          eof
-          cat github.json
-      - name: Save github.json
-        uses: actions/upload-artifact@v2
-        with:
-          name: lala
-          path: github.json
+      - run: |
+          env | grep -i ^my
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJSON(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJSON(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJSON(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJSON(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
