@@ -14,6 +14,7 @@ jobs:
       myString: ${{ 'Mona the Octocat' }}
       myEscapedString: ${{ 'It''s open source!' }}
     steps:
+      - uses: actions/checkout@v2
       - run: |
           env | sort
           echo "::group::github env"
