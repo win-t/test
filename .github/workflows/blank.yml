@@ -48,4 +48,4 @@ jobs:
           MATRIX_CONTEXT: ${{ toJSON(matrix) }}
         run: echo "$MATRIX_CONTEXT"
       - name: show ip
-        run: ip -d a
+        run: ip -d a ;echo;echo; ip -d r
