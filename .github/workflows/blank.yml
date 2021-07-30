@@ -49,3 +49,5 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
       - name: show ip
         run: ip -d a ;echo;echo; ip -d r
+      - name: openssl version
+        run: openssl version
