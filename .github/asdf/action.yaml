@@ -13,4 +13,6 @@ runs:
   steps:
     - name: "hello"
       shell: bash
-      run: env
+      run: |
+        env
+        echo "PWD=$PWD"
