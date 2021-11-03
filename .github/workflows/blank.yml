@@ -7,8 +7,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: fail
-        run: "false"
+      - name: ok
+        run: "true"
       - name: oke
         run: "true"
       - name: check
