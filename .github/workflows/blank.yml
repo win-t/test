@@ -7,11 +7,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: hehehe
-        uses: ./.github/asdf
-      - name: Build
-        run: |
-          mkdir /opt/asdf
-          cd /opt/asdf
-          ls -lha
+      - name: fail
+        run: "false"
+      - name: oke
+        run: "true"
+      - name: check
+        if: ${{ failure() }}
+        run: echo hello
