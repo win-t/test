@@ -1,0 +1,16 @@
+name: "asdf action"
+description: "asdf action"
+inputs:
+  input1:
+    description: "input1 desc"
+    required: false
+  input2:
+    description: "input2 desc"
+    required: false
+    default: "input2 def"
+runs:
+  using: "composite"
+  steps:
+    - name: "hello"
+      shell: bash
+      run: env
