@@ -9,4 +9,6 @@ jobs:
     steps:
       - name: Build
         run: |
-          go version
+          mkdir /opt/asdf
+          cd /opt/asdf
+          ls -lha
