@@ -15,4 +15,4 @@ runs:
       shell: bash
       run: |
         env
-        echo "PWD=$PWD"
+        pwd
