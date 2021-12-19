@@ -4,44 +4,7 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  test-windows:
+    runs-on: windows-2022
     steps:
-      - name: ok
-        run: "true"
-      - name: oke
-        run: "true"
-      - name: check
-        if: ${{ failure() }}
-        run: echo hello
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJSON(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJSON(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJSON(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJSON(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
-      - name: test create issue
-        uses: actions-ecosystem/action-create-issue@v1
-        with:
-          github_token: ${{ github.token }}
-          title: Hello there
-          body: |
-            hello from ${{ github.event.head_commit.url }}
+      - run: docker info
