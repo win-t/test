@@ -7,8 +7,7 @@ jobs:
   test-windows:
     runs-on: windows-2022
     steps:
-      - run: |
-          & 'C:\Program Files\Docker\Docker\DockerCli.exe' -h
+      - run: DockerCli.exe -h
       - run: docker info
       - run: docker run -d --rm --name test-postgres -p 5432 postgres:alpine
       - run: docker port test-postgres
