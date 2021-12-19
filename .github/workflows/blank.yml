@@ -8,3 +8,9 @@ jobs:
     runs-on: windows-2022
     steps:
       - run: docker info
+      - run: docker run -d --rm --name test-postgres -p 5432 postgres:alpine
+      - run: docker port test-postgres
+      - run: sleep 10
+      - run: docker logs test-postgres
+      - run: docker rm -fv test-postgres
+      - run: docker info
