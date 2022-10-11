@@ -5,13 +5,11 @@ on:
   workflow_dispatch:
 jobs:
   test-windows:
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
     steps:
-      - run: DockerCli.exe -h
-      - run: docker info
-      - run: docker run -d --rm --name test-postgres -p 5432 postgres:alpine
-      - run: docker port test-postgres
-      - run: sleep 10
-      - run: docker logs test-postgres
-      - run: docker rm -fv test-postgres
-      - run: docker info
+      - uses: win-t/gh-action-docker-state@v1
+      - name: Inspect images
+        run: |
+          docker images
+          docker pull nginx
+          docker images
