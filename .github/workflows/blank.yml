@@ -7,9 +7,6 @@ jobs:
   test-windows:
     runs-on: ubuntu-latest
     steps:
-      - uses: win-t/gh-action-docker-state@v1
-      - name: Inspect images
+      - name: lala
         run: |
-          docker images
-          docker pull nginx
-          docker images
+          yarn config get cacheFolder
