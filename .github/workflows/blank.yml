@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: lala
         run: |
-          yarn config get cacheFolder
+          go version
