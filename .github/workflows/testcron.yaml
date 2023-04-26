@@ -2,7 +2,7 @@ name: test cron
 
 on:
   schedule:
-    - cron: '45 3 * * *'
+    - cron: '45 3 * * *' # 3:45 UTC -> 10:45 Jakarta
 
 jobs:
   lala:
