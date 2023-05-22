@@ -10,3 +10,8 @@ jobs:
       - name: lala
         run: |
           go version
+          gpg --keyserver keyserver.ubuntu.com --recv EE94ED16177CD7014BA801D769AC2B304E2A3BA8
+          gpg --export --armor EE94ED16177CD7014BA801D769AC2B304E2A3BA8 > key.gpg
+          gpg --dearmor < key.gpg > out.gpg
+          md5sum *.gpg
+          
