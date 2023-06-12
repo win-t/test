@@ -4,7 +4,9 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
-  test-windows:
+  test:
+    permissions:
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
