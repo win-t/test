@@ -7,11 +7,9 @@ jobs:
   test-windows:
     runs-on: ubuntu-latest
     steps:
-      - name: lala
-        run: |
-          go version
-          gpg --keyserver keyserver.ubuntu.com --recv EE94ED16177CD7014BA801D769AC2B304E2A3BA8
-          gpg --export --armor EE94ED16177CD7014BA801D769AC2B304E2A3BA8 > key.gpg
-          gpg --dearmor < key.gpg > out.gpg
-          md5sum *.gpg
-          
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const core = require('@actions/core')
+            const token = await core.getIDToken()
+            console.log("token:", token)
