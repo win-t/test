@@ -10,6 +10,5 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const core = require('@actions/core')
             const token = await core.getIDToken()
             console.log("token:", token)
