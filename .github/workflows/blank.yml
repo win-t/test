@@ -15,5 +15,5 @@ jobs:
             const token = await core.getIDToken()
             const part = token.split('.')
             const decode = str => atob(str.replace(/-/g, '+').replace(/_/g, '/'))
-            console.log(decode(part[0]))
-            console.log(decode(part[1]))
+            console.log(JSON.parse(decode(part[0])))
+            console.log(JSON.parse(decode(part[1])))
