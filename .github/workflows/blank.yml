@@ -9,11 +9,11 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            const token = await core.getIDToken()
-            const part = token.split('.')
-            const decode = str => atob(str.replace(/-/g, '+').replace(/_/g, '/'))
-            console.log(JSON.parse(decode(part[0])))
-            console.log(JSON.parse(decode(part[1])))
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider: projects/12830755177/locations/global/workloadIdentityPools/lala/providers/lala-github
+        service_account: test-sa@win-test-389210.iam.gserviceaccount.com
+    - name: lala
+      run: |
+        gcloud auth list
