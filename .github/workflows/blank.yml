@@ -21,4 +21,4 @@ jobs:
         cat "${credentials_file_path}"
     - name: lala
       run: |
-        gcloud auth list
+        curl "https://oauth2.googleapis.com/tokeninfo?access_token=$(gcloud auth print-access-token)"
