@@ -9,8 +9,10 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-    - id: 'auth'
-      uses: 'google-github-actions/auth@v1'
+    - name: checkout
+      uses: actions/checkout@v3
+    - id: auth
+      uses: google-github-actions/auth@v1
       with:
         workload_identity_provider: projects/12830755177/locations/global/workloadIdentityPools/lala/providers/lala-github
         service_account: test-sa@win-test-389210.iam.gserviceaccount.com
