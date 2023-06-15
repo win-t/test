@@ -9,13 +9,16 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
-      uses: actions/checkout@v3
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
       with:
         workload_identity_provider: projects/12830755177/locations/global/workloadIdentityPools/lala/providers/lala-github
         service_account: test-sa@win-test-389210.iam.gserviceaccount.com
+    - name: cat file
+      env:
+        credentials_file_path: ${{ steps.auth.outputs.credentials_file_path }}
+      run: |
+        cat "${credentials_file_path}"
     - name: lala
       run: |
         gcloud auth list
