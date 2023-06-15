@@ -17,5 +17,5 @@ jobs:
     - uses: google-github-actions/setup-gcloud@v1
     - name: lala
       run: |
-        gcloud auth list
+        gcloud auth print-access-token --log-http
         curl -s "https://oauth2.googleapis.com/tokeninfo?access_token=$(gcloud auth print-access-token)"
