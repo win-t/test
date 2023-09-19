@@ -18,3 +18,4 @@ jobs:
     - name: cek token
       run: |
         curl -s "https://oauth2.googleapis.com/tokeninfo?access_token=$(gcloud auth print-access-token)"
+        cat $GOOGLE_APPLICATION_CREDENTIALS
