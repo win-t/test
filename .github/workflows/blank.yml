@@ -7,6 +7,8 @@ jobs:
     permissions:
       id-token: write
     runs-on: ubuntu-latest
+    env: 
+      REGISTRY: asia-southeast2-docker.pkg.dev/test-cc57d07c78f1/docker
     steps:
     - uses: actions/checkout@v3
     - uses: google-github-actions/auth@v1
@@ -14,13 +16,13 @@ jobs:
         workload_identity_provider: projects/190151941575/locations/global/workloadIdentityPools/github-action/providers/github-oidc
         service_account: github-action-rmc@test-cc57d07c78f1.iam.gserviceaccount.com
     - uses: google-github-actions/setup-gcloud@v1
+    - name: Setup docker auth
+      run: gcloud auth configure-docker "${REGISTRY%%/*}" --quiet
     - name: cek token
       run: |
         curl -sSLf "https://oauth2.googleapis.com/tokeninfo?access_token=$(gcloud auth print-access-token)"
         cat $GOOGLE_APPLICATION_CREDENTIALS
     - name: lala
-      env: 
-        REGISTRY: asia-southeast2-docker.pkg.dev/test-cc57d07c78f1/docker
       run: |
         docker pull wint/httpecho
         docker tag wint/httpecho "${REGISTRY}/httpecho"
