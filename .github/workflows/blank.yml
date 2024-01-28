@@ -32,7 +32,6 @@ jobs:
         --allow-unauthenticated \
         --image wint/httpecho \
         --cpu-boost \
-        --no-cpu-throttling \
         --cpu 80m \
         --memory 128Mi \
         --concurrency 1 \
